@@ -10,10 +10,11 @@ public class TaskProducer : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            DontDestroyOnLoad(Instance);
+            Destroy(gameObject);
         }
     }
 
@@ -50,7 +51,9 @@ public class Task
     public string TaskName { get; set; }
     public string TaskDescription { get; set; }
 
-
+    public bool isTaked;
+    public bool isCompleted;
+    public bool isCanceled;
     public Task(int _level, string _name, string _desc)
     {
         this.TaskLevel = _level;
